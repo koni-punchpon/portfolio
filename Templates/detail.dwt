@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- TemplateBeginEditable name="doctitle" -->
+  <title>PORTFOLIO - DAISUKE KONI</title>
+  <!-- TemplateEndEditable -->
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap"
+    />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="../js/jquery.inview.min.js"></script>
+  <script src="../js/common.js"></script>
+  <!-- TemplateBeginEditable name="head" -->
+  <!-- TemplateEndEditable -->
+  <!-- TemplateParam name="SpDesign" type="boolean" value="false" -->
+  <!-- TemplateParam name="SiteUrl" type="boolean" value="false" -->
+  </head>
+
+  <body id="detail">
+    <a id="page-top" href="#">TOP</a>
+    <header id="header">
+      <h1 class="header__slogan">
+        Want to add my design elements to your website?
+      </h1>
+      <a class="home" href="../index.html#works">
+        <img
+          src="../img/logo-back.svg"
+          alt="DAISUKE-KONI PORTFOLIOトップに戻る"
+        />
+      </a>
+      <nav>
+        <ul>
+          <li><a href="../index.html#works">WORKS</a></li>
+          <li><a href="../index.html#concept">CONCEPT</a></li>
+          <li><a href="../index.html#profile">PROFILE</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="contents">
+      <div class="inner">
+        <article>
+          <div class="article__header">
+            <h2><!-- TemplateBeginEditable name="name" -->
+              案件名<!-- TemplateEndEditable -->
+            </h2>
+            <p><!-- TemplateBeginEditable name="description" -->
+              概要<!-- TemplateEndEditable -->
+            </p>
+            <ul>
+              <li>企業名：<span><!-- TemplateBeginEditable name="client" -->
+                クライアント<!-- TemplateEndEditable --></span></li>
+              <li>担当：<span><!-- TemplateBeginEditable name="type" -->
+                WEBサイトデザイン<!-- TemplateEndEditable --></span></li>
+            </ul><!-- TemplateBeginIf cond="SiteUrl" --><!-- TemplateBeginEditable name="url" -->
+            <a class="site-url" href="URL" target="_blank">
+              URL</a><!-- TemplateEndEditable --><!-- TemplateEndIf -->
+          </div>
+          <div class="article__contents">
+            <div class="pc-design">
+              <h3>PC DESIGN</h3><!-- TemplateBeginEditable name="PcImage" --><img src="../img/design/***.jpg" alt="" /><!-- TemplateEndEditable -->
+            </div><!-- TemplateBeginIf cond="SpDesign" -->
+            <div class="sp-design">
+              <h3>SP DESIGN</h3><!-- TemplateBeginEditable name="SpImage" --><img src="../img/design/***.jpg" alt="" /><!-- TemplateEndEditable -->
+            </div><!-- TemplateEndIf -->
+          </div>
+        </article>
+        <div class="profile__bottom">
+          <p class="copyright">(C)2019 DAISUKE★KONI</p>
+          <ul>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

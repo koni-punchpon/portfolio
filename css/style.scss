@@ -1,0 +1,445 @@
+// mixin: メディアクエリの設定
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$bp-list: (
+  sm: screen and
+    (
+      max-width: #{$sm}
+    ),
+  md: screen and
+    (
+      max-width: #{$md}
+    ),
+  lg: screen and
+    (
+      max-width: #{$lg}
+    ),
+  xl: screen and
+    (
+      max-width: #{$xl}
+    )
+) !default;
+@mixin mq($bp-key) {
+  @media #{map-get($bp-list, $bp-key)} {
+    @content;
+  }
+}
+
+// 色の定義
+$colors: (
+  white: #ffffff,
+  black: #231815,
+  navy: #0c093c,
+  pink: #df42d1,
+  light-pink: #eea5f6
+);
+
+@function colors($key) {
+  @return map-get($colors, $key);
+}
+
+// 各要素の設定
+html {
+  font-size: 10px;
+  padding-top: constant(safe-area-inset-top);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-left: constant(safe-area-inset-left);
+  padding-right: constant(safe-area-inset-right);
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.safe-area-cancellation {
+  padding-top: constant(safe-area-inset-top);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-left: constant(safe-area-inset-left);
+  padding-right: constant(safe-area-inset-right);
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Dosis", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", cursive;
+  word-wrap: break-word;
+  letter-spacing: 0.1rem;
+  background: #f9f9f9;
+  position: relative;
+}
+
+h2 {
+  display: block;
+  color: colors(pink);
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 5rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+  &:hover {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+}
+
+// img[src$=".svg"] {
+//   width: 100%;
+//   max-width: 100%;
+//   height: auto;
+// }
+
+.transition {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+#header {
+  width: 100%;
+  padding: 2rem 4rem 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  @include mq(md) {
+    text-align: center;
+  }
+  @include mq(sm) {
+    padding: 1rem 2rem 0 2rem;
+  }
+  .header__slogan {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: colors(light-pink);
+    display: inline-block;
+    @include mq(sm) {
+      display: none;
+    }
+  }
+  nav {
+    @include mq(sm) {
+      margin-top: 2.5rem;
+      width: 100%;
+    }
+    ul {
+      text-align: center;
+      li {
+        display: inline-block;
+        margin: 0 1.4rem;
+      }
+    }
+    a {
+      color: colors(light-pink);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+  &.fixed {
+    position: fixed;
+    background: rgba(200, 200, 200, 0.65);
+    padding: 1rem 4rem;
+    @include mq(sm) {
+      padding: 1rem 2rem;
+    }
+    text-align: center;
+    @extend .transition;
+    .header__slogan {
+      display: none;
+    }
+    nav {
+      width: 100%;
+      margin-bottom: 0;
+      @include mq(md) {
+        width: 100%;
+      }
+      @include mq(sm) {
+        margin-top: 0;
+      }
+      @extend .transition;
+      a {
+        color: colors(navy);
+        line-height: 1;
+        @extend .transition;
+      }
+    }
+  }
+}
+
+#page-top {
+  display: none;
+  color: colors(white);
+  &.fixed {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: colors(pink);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    @include mq(sm) {
+      padding-bottom: 3rem;
+    }
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    @extend .transition;
+  }
+}
+
+.first-view {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  @include mq(sm) {
+    min-height: calc(100vh - 11rem);
+  }
+  background-color: colors(pink);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  .logo {
+    text-align: center;
+    span {
+      font-size: 1.2rem;
+      color: colors(light-pink);
+      display: block;
+      margin-top: 1.5rem;
+    }
+  }
+  .scroll-btn {
+    padding-bottom: 2rem;
+    text-align: center;
+    a {
+      display: inline-block;
+      position: relative;
+      img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        -webkit-animation: arrow 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0s
+          infinite alternate;
+        animation: arrow 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0s infinite
+          alternate;
+      }
+    }
+  }
+}
+
+// IE用CSSハック(IE11のみ)
+_:-ms-lang(x)::-ms-backdrop,
+.first-view {
+  height: 100vh;
+}
+
+// スクロールボタンのアニメーション設定
+@keyframes arrow {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    opacity: 0.5;
+    -webkit-transform: translate3d(-50%, -8px, 0);
+    transform: translate3d(-50%, -8px, 0);
+  }
+}
+
+section {
+  padding: 10rem 0;
+  @include mq(sm) {
+    padding: 5rem 0;
+  }
+}
+
+.inner {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  box-sizing: content-box;
+  @include mq(md) {
+    max-width: none;
+    margin: 0;
+  }
+}
+
+#works {
+  color: rgba(colors(white), 0.65);
+  background-color: colors(navy);
+  .portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1.25rem;
+    li {
+      width: calc(100% / 5 - 2.5rem);
+      margin: 0 1.25rem 5rem 1.25rem;
+      @include mq(md) {
+        width: calc(100% / 4 - 2.5rem);
+      }
+      @include mq(sm) {
+        width: calc(100% / 2 - 2.5rem);
+        margin-bottom: 2.5rem;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+      }
+      .portfolio__thumb {
+        width: 100%;
+        height: 12rem;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+      h4 {
+        font-size: 1.4rem;
+        color: colors(white) !important;
+        font-weight: normal;
+        line-height: 1.8rem;
+      }
+      p {
+        color: colors(light-pink);
+        line-height: 1.6rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+#concept {
+  padding-top: 7rem !important;
+  margin-top: -7rem;
+  @extend #works;
+  padding-top: 0;
+  p {
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+  }
+}
+
+#profile {
+  @extend section;
+  color: colors(black);
+  @include mq(sm) {
+    padding-bottom: 10rem;
+  }
+  .inner {
+    @extend .inner;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: content-box;
+    @include mq(sm) {
+      justify-content: center;
+      flex-direction: column;
+    }
+    .profile__photo {
+      width: 10rem;
+      height: 10rem;
+      margin-right: 3rem;
+      @include mq(sm) {
+        margin: 0 0 3rem 0;
+      }
+      img {
+        border-radius: 100%;
+      }
+    }
+    .profile__body {
+      h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+      p {
+        margin-top: 1rem;
+      }
+      .contact {
+        display: flex;
+        justify-content: flex-start;
+        @include mq(sm) {
+          flex-direction: column;
+        }
+        margin-top: 1rem;
+        li {
+          &:first-child {
+            margin-right: 3rem;
+          }
+          span {
+            font-weight: bold;
+          }
+          a {
+            color: colors(pink);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.profile__bottom {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  margin-top: 10rem;
+  box-sizing: content-box;
+  @include mq(sm) {
+    margin-top: 5rem;
+  }
+  display: flex;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    flex-direction: row;
+    li {
+      margin-left: 2rem;
+      @include mq(sm) {
+        margin-left: 1rem;
+      }
+      display: flex;
+      align-items: center;
+      &:before {
+        content: " ";
+        display: inline-block;
+        width: 1.4rem;
+        height: 1.4rem;
+        background-size: contain;
+        margin-right: 0.3rem;
+      }
+      &:nth-child(1):before {
+        background-image: url(../img/twitter.svg);
+      }
+      &:nth-child(2):before {
+        background-image: url(../img/facebook.svg);
+      }
+      a {
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: colors(black);
+      }
+    }
+  }
+}
+
+// 詳細ページのCSSをインポート
+@import "detail";
