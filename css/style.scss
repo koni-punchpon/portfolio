@@ -425,10 +425,10 @@ section {
         background-size: contain;
         margin-right: 0.3rem;
       }
+      // &:nth-child(1):before {
+      //   background-image: url(../img/twitter.svg);
+      // }
       &:nth-child(1):before {
-        background-image: url(../img/twitter.svg);
-      }
-      &:nth-child(2):before {
         background-image: url(../img/facebook.svg);
       }
       a {

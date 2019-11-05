@@ -517,10 +517,6 @@ section, #profile {
 }
 
 .profile__bottom ul li:nth-child(1):before {
-  background-image: url(../img/twitter.svg);
-}
-
-.profile__bottom ul li:nth-child(2):before {
   background-image: url(../img/facebook.svg);
 }
 
@@ -728,6 +724,16 @@ section, #profile {
   }
 }
 
+#detail .contents .inner article .article__contents .pc-design img:nth-of-type(2) {
+  margin-top: 10rem;
+}
+
+@media (max-width: 576px) {
+  #detail .contents .inner article .article__contents .pc-design img:nth-of-type(2) {
+    margin-top: 5rem;
+  }
+}
+
 #detail .contents .inner article .article__contents .sp-design {
   margin-left: 5rem;
 }
@@ -735,6 +741,16 @@ section, #profile {
 @media (max-width: 576px) {
   #detail .contents .inner article .article__contents .sp-design {
     margin: 0;
+  }
+}
+
+#detail .contents .inner article .article__contents .sp-design img {
+  max-width: 20rem;
+}
+
+@media (max-width: 576px) {
+  #detail .contents .inner article .article__contents .sp-design img {
+    max-width: 100%;
   }
 }
 
